@@ -18,13 +18,32 @@ function RadioGroup({
   items,
   className,
   extraRender,
+  value,
+  onChange,
+  allowUncheck = false,
   ...props
 }: RadioGroupProps<RecordType>) {
+  const handleRadioClick = (itemValue: any) => {
+    if (!allowUncheck && itemValue === value) {
+      return;
+    }
+    const finalValue = itemValue === value ? null : itemValue;
+    onChange?.(finalValue);
+  };
+
   return (
-    <OriginRadio.Group className={`custom-radio ${className}`} {...props}>
+    <OriginRadio.Group
+      className={`custom-radio ${className}`}
+      value={value}
+      {...props}
+    >
       {items?.map((item, index) => (
         <React.Fragment key={index}>
-          <OriginRadio value={item.value}>{render(item)}</OriginRadio>
+          <div onClick={() => handleRadioClick(item.value)}>
+            <OriginRadio value={item.value} onClick={(e) => e.preventDefault()}>
+              {render(item)}
+            </OriginRadio>
+          </div>
           {extraRender ? extraRender(item) : null}
           {index < items.length - 1 && divider}
         </React.Fragment>
@@ -94,6 +113,7 @@ type RadioGroupProps<RecordType> = {
   render: (item?: RecordType) => React.ReactNode;
   divider?: React.ReactNode;
   extraRender?: (item?: RecordType) => React.ReactNode;
+  allowUncheck?: boolean;
 } & OriginRadioGroupProps;
 
 type RadioButtonGroupProps<RecordType> = {

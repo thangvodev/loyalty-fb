@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { ConfigProvider, Select as OriginalSelect, SelectProps } from "antd";
-import ChevronDown from "../../static/icons/chevron-down.png";
+import ChevronIcon from "../icons/ChevronIcon";
 
 const Select: FC<Props> = ({
   fontSize = 14,
@@ -16,7 +16,9 @@ const Select: FC<Props> = ({
       }}
     >
       <OriginalSelect
-        suffixIcon={<img src={ChevronDown} className="size-[14px]" />}
+        suffixIcon={
+          <ChevronIcon className="size-[10px] rotate-90 text-gray5" />
+        }
         {...rest}
       />
     </ConfigProvider>

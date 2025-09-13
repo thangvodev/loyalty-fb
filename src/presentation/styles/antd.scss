@@ -45,7 +45,12 @@
 // Select
 .customSelect.ant-select {
   .ant-select-selector {
-    border: none !important;
+    border: 0.75px solid #dde3dd !important;
+    border-radius: 8px;
+    .ant-select-selection-item,
+    .ant-select-selection-placeholder {
+      font-size: 12px;
+    }
     .ant-select-selection-item {
       font-weight: 500;
     }
@@ -85,10 +90,10 @@
   .ant-radio-checked {
     .ant-radio-inner {
       background-color: white;
-      border-color: #e55c5c;
+      border-color: #4cba81;
     }
     .ant-radio-inner:after {
-      background-color: #e55c5c;
+      background-color: #4cba81;
       width: 10px;
       height: 10px;
       transform: translate(3px, 3px);

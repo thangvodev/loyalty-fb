@@ -1,14 +1,13 @@
-import { AutoComplete, AutoCompleteProps, ConfigProvider, Input } from "antd";
-import React, {
-  useRef,
-  useState,
-  useImperativeHandle,
-  useEffect,
-  FC,
-} from "react";
-import CloseIcon from "../../static/icons/close-circle-icon.png";
-import SearchIcon from "../../static/icons/search-icon-green.png";
-
+import {
+  AutoComplete,
+  AutoCompleteProps,
+  ConfigProvider,
+  Input,
+  InputProps,
+} from "antd";
+import React, { FC } from "react";
+import CloseIcon from "../icons/CloseIcon";
+import SearchNormalIcon from "../icons/SearchNormalIcon";
 export interface SearchBarRef {
   dropdownHeight: number | null;
   measureDropdownHeight: () => void;
@@ -23,6 +22,10 @@ type SearchBarProps = {
   onSubmit?: any;
 } & AutoCompleteProps;
 
+type SearchBarNoPopupProps = {
+  suffixIcon?: React.ReactNode;
+} & InputProps;
+
 const SearchBar = React.forwardRef<SearchBarRef, SearchBarProps>(
   (
     {
@@ -35,7 +38,7 @@ const SearchBar = React.forwardRef<SearchBarRef, SearchBarProps>(
       suffixIcon,
       prefix,
       allowClear = {
-        clearIcon: <img src={CloseIcon} className="size-[24px] object-cover" />,
+        clearIcon: <CloseIcon className="size-[24px]" />,
       },
       onSearch,
       onClear,
@@ -96,11 +99,7 @@ const SearchBar = React.forwardRef<SearchBarRef, SearchBarProps>(
                 suffixIcon ? (
                   suffixIcon
                 ) : (
-                  <img
-                    src={SearchIcon}
-                    alt=""
-                    className="size-[24px] object-cover"
-                  />
+                  <SearchNormalIcon className="size-[24px]" />
                 )
               }
               className={`z-10 text-sm font-normal ${className}`}
@@ -116,18 +115,19 @@ const SearchBar = React.forwardRef<SearchBarRef, SearchBarProps>(
   },
 );
 
-const SearchBarNoPopup: FC<SearchBarProps> = ({
+const SearchBarNoPopup: FC<SearchBarNoPopupProps> = ({
   placeholder,
   prefix,
   suffixIcon,
   className,
   allowClear = {
-    clearIcon: <img src={CloseIcon} className="size-[24px] object-cover" />,
+    clearIcon: <CloseIcon className="size-[24px]" />,
   },
   onClear,
   value,
   onChange,
   onSubmit,
+  ...props
 }) => {
   return (
     <ConfigProvider
@@ -143,22 +143,14 @@ const SearchBarNoPopup: FC<SearchBarProps> = ({
         placeholder={placeholder}
         prefix={prefix}
         suffix={
-          suffixIcon ? (
-            suffixIcon
-          ) : (
-            <img
-              src={SearchIcon}
-              alt=""
-              className="size-[24px] object-cover"
-              onClick={onSubmit}
-            />
-          )
+          suffixIcon ? suffixIcon : <SearchNormalIcon className="size-[24px]" />
         }
         className={`z-10 text-sm font-normal ${className}`}
         allowClear={allowClear as { clearIcon: React.ReactNode }}
         onClear={onClear}
         value={value}
         onChange={onChange}
+        {...props}
       />
     </ConfigProvider>
   );

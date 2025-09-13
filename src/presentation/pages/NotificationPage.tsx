@@ -14,14 +14,14 @@ const NotificationPage = () => {
             </div>
           ) as unknown as string
         }
-        className="topbar h-auto flex-none !bg-green6"
+        className="topbar no-border h-auto flex-none !bg-green6"
         backIcon={
           <div className="absolute left-1/2 top-1/2 flex size-[16px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full">
             <ArrowLeftIcon className="size-full object-cover text-white" />
           </div>
         }
       />
-      <div className="flex flex-1 overflow-auto bg-surface"></div>
+      <div className="flex-1 overflow-auto bg-surface"></div>
       <Footer />
     </Page>
   );

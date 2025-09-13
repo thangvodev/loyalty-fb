@@ -6,11 +6,14 @@ import Diamond from "../../static/icons/diamond.svg";
 import BarCode from "../../static/images/bar-code.png";
 import { Progress } from "antd";
 import ArrowLeftIcon from "../icons/ArrowLeftIcon";
+import { useNavigate } from "react-router-dom";
 
-export const HeaderCard = () => {
+export const MemberCard = () => {
+  const navigate = useNavigate();
+
   return (
     <div
-      className="absolute inset-x-[16px] bottom-0 z-50 flex translate-y-1/3 flex-col overflow-hidden rounded-[12px]"
+      className="flex flex-col overflow-hidden rounded-[12px]"
       style={{ boxShadow: "0px 4px 24px 0px #7F928624" }}
     >
       <div className="relative flex flex-col gap-[14px] px-[16px] pb-[8px] pt-[12px]">
@@ -76,7 +79,10 @@ export const HeaderCard = () => {
         >
           <img src={BarCode} alt="" className="size-full" />
         </div>
-        <div className="flex items-center gap-[4px]">
+        <div
+          className="flex items-center gap-[4px]"
+          onClick={() => navigate("/qr")}
+        >
           <div className="text-2xs font-medium leading-none text-gray6">
             Mở QR tích điểm sau khi mua hàng
           </div>
