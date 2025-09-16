@@ -10,10 +10,10 @@ export const BookFloatButton = () => {
       style={{ boxShadow: "0px -4px 24px 0px #00000014" }}
     >
       <Button
-        text={<div className="text-base font-medium text-white">Đặt bàn</div>}
+        text={<div className="text-base font-medium text-white">Đặt ngay</div>}
         className="flex h-[43px] w-full items-center justify-center rounded-[12px] bg-green6 px-[14px]"
         style={{ boxShadow: "0px 4px 24px 0px #7D6A6A14" }}
-        onClick={() => navigate("/table-booking-details")}
+        onClick={() => navigate("/table-booking-success")}
       />
     </div>
   );

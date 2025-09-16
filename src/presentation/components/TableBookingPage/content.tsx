@@ -9,7 +9,7 @@ const Content = () => {
   return (
     <div className="size-full">
       <img src={Banner} alt="" className="h-[240px] w-full object-cover" />
-      <div className="relative z-10 flex -translate-y-[20px] flex-col gap-[16px] rounded-[20px] bg-white pt-[20px]">
+      <div className="relative z-10 flex -translate-y-[30px] flex-col gap-[16px] rounded-[20px] bg-white pt-[20px]">
         <SelectRestaurant />
         <TableBooking />
         <RestaurantInfo />

@@ -3,15 +3,15 @@ import FoodImage from "../../static/images/food.png";
 import { formatCurrency } from "../../utils/helpers";
 import { Button } from "../common/button";
 import AddCircleFilledIcon from "../icons/AddCircleFilledIcon";
-import { ItemSheet } from "./item-sheet";
+import { PreorderItemSheet } from "./preorder-item-sheet";
 
-export const ItemList = () => {
+export const PreorderList = () => {
   return (
-    <div className="flex flex-col gap-[14px] px-[12px]">
+    <div className="flex flex-col gap-[14px] px-[16px]">
       <div className="text-xl font-semibold">Lẩu</div>
       <div className="grid grid-cols-2 gap-[12px]">
         {Array.from({ length: 10 }).map((_, index) => (
-          <ItemSheet key={index}>
+          <PreorderItemSheet key={index}>
             {({ open }) => (
               <div
                 className="flex flex-col gap-[8px] overflow-hidden rounded-[12px] bg-white pb-[12px]"
@@ -50,7 +50,7 @@ export const ItemList = () => {
                 </div>
               </div>
             )}
-          </ItemSheet>
+          </PreorderItemSheet>
         ))}
       </div>
     </div>

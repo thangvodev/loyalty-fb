@@ -33,8 +33,9 @@ export const SuccessPopup: FC<Props> = ({ open, onClose }) => {
             boxShadow: "0px 4px 40px 0px #3A3A3A33",
           }}
           mask={false}
+          className="bottom-modal"
         >
-          <div className="-mt-[12px] flex items-center gap-[12px]">
+          <div className="flex items-center gap-[12px]">
             <div
               className="flex size-[52px] items-center justify-center rounded-[11.14px] p-[7.43px]"
               style={{

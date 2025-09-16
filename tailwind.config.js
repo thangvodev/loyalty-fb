@@ -50,7 +50,7 @@ module.exports = {
         gray2: "#DDE3DD",
         gray3: "#CFCFCF",
         gray4: "#BCC2C8",
-        gray5: "#A0A0A0",
+        gray5: "#6E876E",
         gray6: "#888888",
         gray7: "#6D6D6D",
         gray8: "#515151",

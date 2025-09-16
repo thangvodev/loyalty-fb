@@ -1,52 +1,18 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { Form } from "../common/form";
 import { Select } from "../common/select";
-import { Picker } from "zmp-ui";
-import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import CalendarIcon from "../icons/CalendarIcon";
+import { DatePicker } from "../common/date-picker";
+import ChevronIcon from "../icons/ChevronIcon";
 
 export const TableBooking = () => {
   const [form] = Form.useForm();
 
   const initialValues = {
     amount: 1,
-    time: reformatDayjsToPickerInput(dayjs()),
+    time: dayjs(),
   };
-
-  const virtualDays = useMemo(
-    () =>
-      Array.from({ length: 100 }).map((_, index) => {
-        const currentDate = dayjs().add(index, "day");
-        return {
-          displayName: `${weekdays[currentDate.day()]}, ${currentDate.format("DD [th]M")}`,
-          value: currentDate.format("DD/MM/YYYY"),
-        };
-      }),
-    [],
-  );
-
-  const virtualHours = useMemo(
-    () =>
-      Array.from({ length: 25 }, (_, i) => i.toString().padStart(2, "0")).map(
-        (hour, index) => ({
-          displayName: hour,
-          value: index,
-        }),
-      ),
-    [],
-  );
-
-  const virtualMinutes = useMemo(
-    () =>
-      Array.from({ length: 61 }, (_, i) => i.toString().padStart(2, "0")).map(
-        (hour, index) => ({
-          displayName: hour,
-          value: index,
-        }),
-      ),
-    [],
-  );
 
   return (
     <div className="flex flex-col gap-[5px] px-[16px]">
@@ -65,6 +31,9 @@ export const TableBooking = () => {
           <Select
             placeholder="Nhập số người"
             className="customSelect h-[40px] rounded-[8px]"
+            suffixIcon={
+              <ChevronIcon className="size-[10px] rotate-90 text-black" />
+            }
             options={[
               { value: 1, label: "1 người" },
               { value: 2, label: "2 người" },
@@ -78,68 +47,37 @@ export const TableBooking = () => {
           label="Thời gian đặt bàn"
           labelCol={{ className: "!pb-0" }}
           style={{ marginBottom: 0 }}
-          getValueFromEvent={(e) => {
-            const result = reformatPickerOutputToPickerInput(e);
-            const currentTime = form.getFieldValue("time");
-            return { ...currentTime, ...result };
-          }}
         >
-          <Picker
+          <DatePicker
             title="Chọn ngày giờ"
             action={{
               close: true,
               text: "Xác nhận",
             }}
             inputClass="!text-xs !border-gray2 !m-0 !h-[40px]"
-            suffix={
-              <CalendarIcon className="mr-[12px] size-[18px] text-gray5" />
-            }
+            suffix={<CalendarIcon className="size-[18px] text-gray5" />}
             placeholder="Chọn ngày giờ"
             formatPickedValueDisplay={(value) => {
-              return reformatPickerInputToDayjs(
-                reformatPickerOutputToPickerInput(value),
-              ).format("DD [th] M[, ]H:mm");
+              return value.isSame(dayjs(), "day")
+                ? value.format("[Hôm nay, ]H:mm")
+                : value.format("DD [th] M[, ]H:mm");
             }}
-            data={[
-              {
-                name: "date",
-                options: virtualDays,
-              },
-              {
-                name: "hour",
-                options: virtualHours,
-              },
-              {
-                name: "minute",
-                options: virtualMinutes,
-              },
-            ]}
           />
         </Form.Item>
         <Form.Item
-          shouldUpdate={(prev, next) =>
-            prev.time.hour !== next.time.hour ||
-            prev.time.minute !== next.time.minute
-          }
+          shouldUpdate={(prev, next) => prev.time !== next.time}
           noStyle
         >
           {({ getFieldValue, setFieldValue }) => {
             return (
               <div className="mt-[12px] flex gap-[8px]">
                 {Array.from({ length: 6 }).map((_, i) => {
-                  const newTime = reformatPickerInputToDayjs(
-                    getFieldValue("time"),
-                  ).add(i + 1, "h");
+                  const newTime = getFieldValue("time").add(i + 1, "h");
                   return (
                     <div
                       key={i}
                       className="flex h-[22px] items-center justify-center rounded-[24px] bg-orange1 px-[6px]"
-                      onClick={() =>
-                        setFieldValue(
-                          "time",
-                          reformatDayjsToPickerInput(newTime),
-                        )
-                      }
+                      onClick={() => setFieldValue("time", newTime)}
                     >
                       <span className="text-xs font-medium text-orange8">
                         {newTime?.format("HH:mm")}
@@ -154,32 +92,4 @@ export const TableBooking = () => {
       </Form>
     </div>
   );
-};
-
-const weekdays = ["CN", "Th2", "Th3", "Th4", "Th5", "Th6", "Th7"];
-
-const reformatDayjsToPickerInput = (time: Dayjs) => {
-  return {
-    date: time.format("DD/MM/YYYY"),
-    hour: time.get("hour"),
-    minute: time.get("minute"),
-  };
-};
-
-const reformatPickerInputToDayjs = (formattedTime): Dayjs => {
-  const { date: dateValue, hour, minute } = formattedTime;
-  let result = dayjs(dateValue, "DD/MM/YYYY");
-
-  if (hour !== undefined) result = result.set("hour", hour);
-  if (minute !== undefined) result = result.set("minute", minute);
-
-  return result;
-};
-
-const reformatPickerOutputToPickerInput = (formattedTime) => {
-  const result = Object.keys(formattedTime).reduce((acc, key) => {
-    acc[key] = formattedTime[key].value;
-    return acc;
-  }, {});
-  return result;
 };

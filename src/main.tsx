@@ -18,12 +18,14 @@ import "dayjs/locale/vi";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import localeData from "dayjs/plugin/localeData";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 //change to vietnamese
 dayjs.locale("vi");
 //add plugins
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(localeData);
+dayjs.extend(customParseFormat);
 
 import { AppProvider } from "./presentation/context/AppContext";
 import HomePage from "./presentation/pages/HomePage";
@@ -38,6 +40,10 @@ import UserDeliveryDetailsPage from "./presentation/pages/UserDeliveryDetailsPag
 import OrderSuccessPage from "./presentation/pages/OrderSuccessPage";
 import SelectRestaurantPage from "./presentation/pages/SelectRestaurantPage";
 import TableBookingPage from "./presentation/pages/TableBookingPage";
+import TableBookingDetailsPage from "./presentation/pages/TableBookingDetailsPage";
+import TableBookingSuccessPage from "./presentation/pages/TableBookingSuccessPage";
+import OrderTakeoutPage from "./presentation/pages/OrderTakeoutPage";
+import CartTakeoutPage from "./presentation/pages/CarttakeoutPage";
 
 const Layout = () => {
   return (
@@ -69,6 +75,10 @@ const router = createBrowserRouter(
           element: <OrderSuccessPage />,
         },
         {
+          path: "order-takeout",
+          element: <OrderTakeoutPage />,
+        },
+        {
           path: "notification",
           element: <NotificationPage />,
         },
@@ -93,6 +103,10 @@ const router = createBrowserRouter(
           element: <CartPage />,
         },
         {
+          path: "cart-takeout",
+          element: <CartTakeoutPage />,
+        },
+        {
           path: "user-delivery-details",
           element: <UserDeliveryDetailsPage />,
         },
@@ -103,6 +117,14 @@ const router = createBrowserRouter(
         {
           path: "table-booking",
           element: <TableBookingPage />,
+        },
+        {
+          path: "table-booking-details",
+          element: <TableBookingDetailsPage />,
+        },
+        {
+          path: "table-booking-success",
+          element: <TableBookingSuccessPage />,
         },
       ],
     },

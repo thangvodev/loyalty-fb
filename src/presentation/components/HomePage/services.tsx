@@ -12,7 +12,10 @@ export const Services = () => {
       <div className="text-xl font-semibold">Dịch vụ</div>
       <div className="flex gap-[20px]">
         {/* Service */}
-        <div className="flex flex-1 flex-col items-center gap-[10px]">
+        <div
+          className="flex flex-1 flex-col items-center gap-[10px]"
+          onClick={() => navigate("/order-takeout")}
+        >
           <div
             className="flex h-[72px] w-full items-center justify-center rounded-[13.5px] bg-[#FAF2EA]"
             style={{ boxShadow: "0px 4px 4px 0px #FFFFFF40 inset" }}
@@ -34,7 +37,7 @@ export const Services = () => {
         {/* Service */}
         <div
           className="flex flex-1 flex-col items-center gap-[10px]"
-          onClick={() => navigate("table-booking")}
+          onClick={() => navigate("/table-booking")}
         >
           <div
             className="flex h-[72px] w-full items-center justify-center rounded-[13.5px] bg-[#FAF2EA]"

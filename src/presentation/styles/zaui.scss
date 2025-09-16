@@ -1,13 +1,18 @@
 // Modal
-.zaui-modal-wrapper {
-  align-items: end !important;
-  top: unset !important;
-  width: fit-content;
-  height: fit-content;
-  overflow: visible !important;
-  .zaui-modal-content-main {
-    overflow-y: visible !important;
-    padding: 0 !important;
+.zaui-modal-content-main {
+  overflow-y: visible !important;
+  padding: 0 !important;
+  .zaui-modal-content-title {
+    margin: 0 !important;
+  }
+}
+.bottom-modal {
+  .zaui-modal-wrapper {
+    align-items: unset !important;
+    top: unset !important;
+    width: fit-content;
+    height: fit-content;
+    overflow: visible !important;
   }
 }
 

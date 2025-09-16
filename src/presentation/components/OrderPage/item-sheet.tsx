@@ -12,7 +12,7 @@ import { Divider, Input } from "antd";
 import { Radio } from "../common/radio";
 import clsx from "clsx";
 
-const OrderSheet: FC<Props> = ({ children }) => {
+const ItemSheet: FC<Props> = ({ children }) => {
   const [form] = Form.useForm();
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -200,7 +200,7 @@ const OrderSheet: FC<Props> = ({ children }) => {
   );
 };
 
-export { OrderSheet };
+export { ItemSheet };
 
 type Props = {
   children: (methods: { open: () => void }) => React.ReactNode;
