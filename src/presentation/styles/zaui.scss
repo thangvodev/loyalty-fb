@@ -10,9 +10,12 @@
   .zaui-modal-wrapper {
     align-items: unset !important;
     top: unset !important;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     overflow: visible !important;
+    .zaui-modal-content {
+      max-height: max-content;
+    }
   }
 }
 

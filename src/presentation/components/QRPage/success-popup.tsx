@@ -25,10 +25,10 @@ export const SuccessPopup: FC<Props> = ({ open, onClose }) => {
           onClose={onClose}
           modalStyle={{
             zIndex: 50,
-            margin: "0 16px 32px",
+            margin: "0 16px 48px",
             padding: "12px",
-            position: "relative",
-            width: "343px",
+            width: "100%",
+            height: "fit-content",
             borderRadius: "12px",
             boxShadow: "0px 4px 40px 0px #3A3A3A33",
           }}

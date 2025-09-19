@@ -5,7 +5,7 @@ import EditIcon from "../icons/EditIcon";
 
 const OrderedList = () => {
   return (
-    <div className="flex flex-col gap-[12px] px-[16px] py-[12px]">
+    <div className="flex flex-col gap-[12px] px-[16px] pb-[12px]">
       {Array.from({ length: 2 }).map((_, index) => (
         <React.Fragment key={index}>
           <OrderedListItem />

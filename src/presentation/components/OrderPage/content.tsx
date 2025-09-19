@@ -14,7 +14,7 @@ const Content: FC<{ showFloat: boolean; showSearch: boolean }> = ({
   return (
     <div className="relative z-10 flex w-full flex-col gap-[14px]">
       <div
-        className="fixed inset-x-0 h-[30px] bg-green6"
+        className="fixed inset-x-0 -z-[10] h-[30px] bg-green6"
         style={{
           borderBottomLeftRadius: "200% 50px",
           borderBottomRightRadius: "200% 50px",

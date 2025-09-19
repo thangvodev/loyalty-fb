@@ -34,10 +34,10 @@ const PromoCodeSheet: FC<Props> = ({ children }) => {
               <div className="relative px-[16px]">
                 <div className="text-left">Mã giảm giá</div>
                 <div
-                  className="absolute right-[16px] top-0 size-[24px]"
+                  className="absolute right-[16px] top-0 flex size-[24px] items-center justify-end"
                   onClick={() => setVisible(false)}
                 >
-                  <CloseOutlined className="size-full text-gray6" />
+                  <CloseOutlined className="text-gray6" />
                 </div>
               </div>
             ) as unknown as string
@@ -104,7 +104,7 @@ const PromoCodeSheet: FC<Props> = ({ children }) => {
                             Xem chi tiết
                           </div>
                           <div className="flex items-center gap-[4px]">
-                            <ClockFilledIcon className="text-orange5 size-[12px]" />
+                            <ClockFilledIcon className="size-[12px] text-orange5" />
                             <div className="text-[11px] font-normal text-red5">
                               Hết hạn sau 2 ngày
                             </div>

@@ -2,7 +2,11 @@ import { ConfigProvider, Tabs as OriginalTabs } from "antd";
 import { TabsProps } from "antd/lib";
 import React, { FC } from "react";
 
-export const Tabs: FC<Props> = ({ selectColor = "#1677ff", ...rest }) => {
+export const Tabs: FC<Props> = ({
+  selectColor = "#1677ff",
+  margin,
+  ...rest
+}) => {
   return (
     <ConfigProvider
       theme={{
@@ -12,6 +16,7 @@ export const Tabs: FC<Props> = ({ selectColor = "#1677ff", ...rest }) => {
             inkBarColor: selectColor,
             horizontalItemGutter: 0,
             horizontalItemPadding: "16px",
+            margin: margin,
           },
         },
       }}
@@ -23,4 +28,5 @@ export const Tabs: FC<Props> = ({ selectColor = "#1677ff", ...rest }) => {
 
 type Props = {
   selectColor?: string;
+  margin?: number;
 } & TabsProps;

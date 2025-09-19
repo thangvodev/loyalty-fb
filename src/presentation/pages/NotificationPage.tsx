@@ -2,6 +2,7 @@ import React from "react";
 import { Header, Page } from "zmp-ui";
 import ArrowLeftIcon from "../components/icons/ArrowLeftIcon";
 import { Footer } from "../components/common/footer";
+import { NotificationPageContent } from "../components/NotificationPage";
 
 const NotificationPage = () => {
   return (
@@ -21,7 +22,9 @@ const NotificationPage = () => {
           </div>
         }
       />
-      <div className="flex-1 overflow-auto bg-surface"></div>
+      <div className="flex-1 overflow-auto bg-white">
+        <NotificationPageContent />
+      </div>
       <Footer />
     </Page>
   );

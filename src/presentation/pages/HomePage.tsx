@@ -31,16 +31,7 @@ const HomePage: FC = () => {
             "linear-gradient(90deg, #58D795 0%, #4CBA81 31.83%, #159954 101.86%)",
         }}
       />
-      <div className="relative flex-1 overflow-auto bg-surface1">
-        <div
-          className="fixed inset-x-0 h-[80px]"
-          style={{
-            borderBottomLeftRadius: "200% 50px",
-            borderBottomRightRadius: "200% 50px",
-            background:
-              "linear-gradient(90deg, #58D795 0%, #4CBA81 31.83%, #159954 101.86%)",
-          }}
-        />
+      <div className="flex-1 overflow-auto bg-surface1">
         <HomePageContent />
       </div>
       <Footer />

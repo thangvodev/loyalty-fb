@@ -23,7 +23,7 @@ const PreorderSheet: FC<Props> = ({ children }) => {
               <div className="relative px-[16px] pb-[12px]">
                 <div className="text-left text-xl font-semibold">Thêm món</div>
                 <div
-                  className="absolute right-[14px] top-0 size-[23.66px]"
+                  className="absolute right-[14px] top-0 flex size-[23.66px] items-center justify-end"
                   onClick={() => setVisible(false)}
                 >
                   <CloseOutlined className="text-gray6" />

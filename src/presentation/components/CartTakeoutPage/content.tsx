@@ -14,6 +14,7 @@ const Content = () => {
         items={items}
         className="custom-tabs pt-[8px]"
         selectColor="#50C889"
+        margin={14}
       />
     </div>
   );

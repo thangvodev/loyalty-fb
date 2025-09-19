@@ -43,7 +43,14 @@ import TableBookingPage from "./presentation/pages/TableBookingPage";
 import TableBookingDetailsPage from "./presentation/pages/TableBookingDetailsPage";
 import TableBookingSuccessPage from "./presentation/pages/TableBookingSuccessPage";
 import OrderTakeoutPage from "./presentation/pages/OrderTakeoutPage";
-import CartTakeoutPage from "./presentation/pages/CarttakeoutPage";
+import CartTakeoutPage from "./presentation/pages/CartTakeoutPage";
+import ProfilePage from "./presentation/pages/ProfilePage";
+import OrderHistoryPage from "./presentation/pages/OrderHistoryPage";
+import OrderDetailsPage from "./presentation/pages/OrderDetailsPage";
+import PointsPage from "./presentation/pages/PointsPage";
+import PointsRedeemPage from "./presentation/pages/PointsRedeemPage";
+import RewardDetailsPage from "./presentation/pages/RewardDetailsPage";
+import MemberCardsPage from "./presentation/pages/MemberCardsPage";
 
 const Layout = () => {
   return (
@@ -71,6 +78,10 @@ const router = createBrowserRouter(
           element: <OrderPage />,
         },
         {
+          path: "order/:orderId",
+          element: <OrderDetailsPage />,
+        },
+        {
           path: "order-success",
           element: <OrderSuccessPage />,
         },
@@ -79,12 +90,20 @@ const router = createBrowserRouter(
           element: <OrderTakeoutPage />,
         },
         {
+          path: "order-history",
+          element: <OrderHistoryPage />,
+        },
+        {
           path: "notification",
           element: <NotificationPage />,
         },
         {
           path: "account",
           element: <AccountPage />,
+        },
+        {
+          path: "profile",
+          element: <ProfilePage />,
         },
         {
           path: "qr",
@@ -125,6 +144,22 @@ const router = createBrowserRouter(
         {
           path: "table-booking-success",
           element: <TableBookingSuccessPage />,
+        },
+        {
+          path: "points",
+          element: <PointsPage />,
+        },
+        {
+          path: "points-redeem",
+          element: <PointsRedeemPage />,
+        },
+        {
+          path: "rewards/:rewardId",
+          element: <RewardDetailsPage />,
+        },
+        {
+          path: "member-cards",
+          element: <MemberCardsPage />,
         },
       ],
     },

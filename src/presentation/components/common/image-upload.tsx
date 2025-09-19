@@ -6,7 +6,7 @@ import {
 } from "antd";
 import React, { useEffect, useMemo, useState } from "react";
 import { Modal, Upload } from "antd";
-import { RequiredFields, SafeParameters } from "../../utils/types";
+import { RequiredFields } from "../../utils/types";
 import { v4 as uuidv4 } from "uuid";
 import CloseFilledIcon from "../icons/CloseFilledIcon";
 import AddCircleIcon from "../icons/AddCircleIcon";
